@@ -9,3 +9,8 @@ Ceci est la representation graphique de l'exercices 2
 
 ![Alt text](exo%202%20tache%20capture.png "Exercices 2")
 
+
+Ceci est la representation graphique de l'exercices 3
+
+![Alt text](exo3.png "Exercices 3")
+
