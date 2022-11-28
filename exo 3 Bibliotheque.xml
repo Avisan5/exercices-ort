@@ -37,18 +37,10 @@
 		<type label="SET" length="1" sql="SET" quote=""/>
 		<type label="Bit" length="0" sql="bit" quote=""/>
 	</group>
-</datatypes><table x="106" y="9" name="Livre">
+</datatypes><table x="68" y="91" name="Livre">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="id_Lecteur" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Lecteur" row="id" />
-</row>
-<row name="id_Adhérant" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Adhérant" row="id" />
-</row>
 <row name="id_Auteur" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="Auteur" row="id" />
@@ -57,15 +49,11 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="Cartégorie" row="id" />
 </row>
-<row name="id_Document" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="Document" row="id" />
-</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="536" y="443" name="Bibliotheque">
+<table x="532" y="510" name="Bibliotheque">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -81,7 +69,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="84" y="419" name="Adhérant">
+<table x="68" y="456" name="Adhérant">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -112,7 +100,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="135" y="239" name="Lecteur">
+<table x="80" y="283" name="Lecteur">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -126,7 +114,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="514" y="18" name="Auteur">
+<table x="455" y="49" name="Auteur">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -134,7 +122,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="490" y="118" name="Cartégorie">
+<table x="426" y="134" name="Cartégorie">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -142,7 +130,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="437" y="592" name="Gestionnaire d'emprunt">
+<table x="439" y="651" name="Gestionnaire d'emprunt">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -150,11 +138,11 @@
 <part>id</part>
 </key>
 </table>
-<table x="508" y="227" name="Document">
+<table x="776" y="400" name="Document">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="Title" null="1" autoincrement="0">
+<row name="Titre" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <row name="Date d'achat" null="1" autoincrement="0">
@@ -172,15 +160,24 @@
 <part>id</part>
 </key>
 </table>
-<table x="783" y="369" name="Journaux">
+<table x="1063" y="539" name="Journaux">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="Titre" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="Date d'achat" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="Date de parution" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="780" y="216" name="Volumes">
+<table x="1059" y="321" name="Volumes">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -192,7 +189,66 @@
 <default>NULL</default></row>
 <row name="BD" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
+<default>NULL</default><comment>(enfant, junior, adulte)</comment>
+</row>
+<row name="id_Auteur" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Auteur" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="353" y="209" name="Emprunt">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
 <default>NULL</default></row>
+<row name="Nom de document" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="Date d'emprunt" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default></row>
+<row name="Date de rendu" null="1" autoincrement="0">
+<datatype>DATETIME</datatype>
+<default>NULL</default></row>
+<row name="Date de prolongation" null="0" autoincrement="0">
+<datatype>DATETIME(1)</datatype>
+<default>'1'</default></row>
+<row name="id_Livre" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Livre" row="id" />
+</row>
+<row name="id_Lecteur" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Lecteur" row="id" />
+</row>
+<row name="id_Adhérant" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Adhérant" row="id" />
+</row>
+<row name="id_bibliothécaire" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default><relation table="bibliothécaire" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="863" y="134.20000076293945" name="bibliothécaire">
+<row name="id" null="1" autoincrement="0">
+<datatype>INT</datatype>
+<default>NULL</default></row>
+<row name="Nom" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="Prénom" null="1" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>NULL</default></row>
+<row name="id_Emprunt" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="Emprunt" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
