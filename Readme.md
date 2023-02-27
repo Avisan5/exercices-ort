@@ -14,3 +14,8 @@ Ceci est la representation graphique de l'exercices 3
 
 ![Alt text](exo3.png "Exercices 3")
 
+
+Ceci est la representation graphique de l'exercices 4
+
+![Alt text](Exo4.png "Exercices 4")
+
